@@ -28,7 +28,12 @@ with open('temperature_log.csv', mode='a', newline='') as file:
             timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
             
             # Log data to CSV
-            writer.writerow([timestamp, temperature])
+            with open('temperature_log.csv', mode='a', newline='') as file:
+                writer = csv.writer(file)
+                if write_header:
+                    writer.writerow(["Timestamp", "Temperature (°C)"])
+                    write_header = False
+                writer.writerow([timestamp, temperature])
             print(f"{timestamp} - Temperature: {temperature:.2f} °C")
             
             # Wait for 10 seconds
