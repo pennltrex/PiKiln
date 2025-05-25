@@ -47,7 +47,10 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("Received:", data);
 
         // Add new data point
-        tempChart.data.labels.push(data.time);
+        tempChart.data.labels.push({
+            x: data.time,
+            y: data.temp
+        });
         tempChart.data.datasets[0].data.push(data.temp);
 
         // Keep only the last 100 points
