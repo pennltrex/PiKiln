@@ -1,0 +1,6 @@
+
+flask
+flask-socketio
+adafruit-blinka
+adafruit-circuitpython-max31856
+RPi.GPIO
