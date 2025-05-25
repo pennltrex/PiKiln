@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         data: {
             datasets: [{
                 label: 'Temperature (°C)',
-                data: [],
+                data: window.initialData || [],
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 2,
                 fill: false,

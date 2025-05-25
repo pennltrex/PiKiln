@@ -12,6 +12,9 @@
 
 <!-- Include Chart.js and your script -->
 <script src="{{ url_for('static', filename='js/graph.js') }}"></script>
+<script>
+    window.initialData = {{ initial_data|tojson }};
+</script>
 
 </body>
 </html>
