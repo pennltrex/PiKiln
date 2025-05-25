@@ -9,7 +9,7 @@ import settings
 
 # Set up SPI and chip select
 spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
-cs = digitalio.DigitalInOut(board, settings.DIGITAL_INOUT_PIN)  # Replace with your actual CS pin
+cs = digitalio.DigitalInOut(getattr(board, settings.DIGITAL_INOUT_PIN))  # Replace with your actual CS pin
 thermocouple = adafruit_max31856.MAX31856(spi, cs)
 
 # Check if the file exists and is empty
@@ -31,7 +31,7 @@ try:
             writer.writerow([timestamp, temperature])
         print(f"{timestamp} - Temperature: {temperature:.2f} °C")
         
-        # Wait for 10 seconds
+        # Wait for specified seconds
         time.sleep(settings.LOG_INTERVAL_SECONDS)
 except KeyboardInterrupt:
     print("Logging stopped.")
