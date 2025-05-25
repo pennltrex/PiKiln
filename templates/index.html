@@ -7,7 +7,10 @@
 </head>
 <body>
     <h2>Kiln Temperature</h2>
-    <canvas id="tempChart" width="800" height="400"></canvas>
-    <script src="/static/script.js"></script>
+<canvas id="tempChart" width="800" height="400"></canvas>
+
+<!-- Include Chart.js and your script -->
+<script src="{{ url_for('static', filename='js/graph.js') }}"></script>
+
 </body>
 </html>
