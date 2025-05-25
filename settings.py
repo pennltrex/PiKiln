@@ -1,0 +1,3 @@
+DIGITAL_INOUT_PIN = "D5"
+LOG_INTERVAL_SECONDS = 1
+CSV_FILE_NAME = "temperature_log.csv"
