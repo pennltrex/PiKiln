@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const tempChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: [], // timestamps
             datasets: [{
                 label: 'Temperature (°C)',
                 data: [],
@@ -19,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 x: {
                     type: 'time',
                     time: {
-                        parser: 'HH:mm:ss',
+                        parser: 'yyyy-MM-dd HH:mm:ss', // Match your timestamp format!
                         tooltipFormat: 'HH:mm:ss',
                         unit: 'minute',
                         displayFormats: {
@@ -46,16 +45,14 @@ document.addEventListener('DOMContentLoaded', function () {
     socket.on('temperature_update', function (data) {
         console.log("Received:", data);
 
-        // Add new data point
-        tempChart.data.labels.push({
-            x: data.time,
+        // Add new data point as {x, y}
+        tempChart.data.datasets[0].data.push({
+            x: data.time, // Should be a string like "2024-05-25 09:50:00"
             y: data.temp
         });
-        tempChart.data.datasets[0].data.push(data.temp);
 
         // Keep only the last 100 points
-        if (tempChart.data.labels.length > 100) {
-            tempChart.data.labels.shift();
+        if (tempChart.data.datasets[0].data.length > 100) {
             tempChart.data.datasets[0].data.shift();
         }
 
